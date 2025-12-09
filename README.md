@@ -41,7 +41,7 @@ project/
 
 Clone the repository:
 
-git clone https://github.com/yourname/telegram-username-checker.git
+git clone https://github.com/mrticky/Telegram-Username-Checker-no-proxies-needed-
 cd telegram-username-checker
 
 Install dependencies:
