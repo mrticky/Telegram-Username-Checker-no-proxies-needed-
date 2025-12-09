@@ -1,44 +1,42 @@
-📨 Telegram Username Checker
+Telegram Username Checker
 
-A fast, multithreaded Telegram username scanner with Discord webhook alerts, beep notifications, and automatic hit saving.
+A fast multithreaded Telegram username scanner with Discord webhook alerts, optional beep notifications, and automatic hit saving.
 
-⭐ Features
+Features
 
-⚡ High-Speed Multithreading — Checks usernames using up to 20 threads.
+High-Speed Multithreading — Checks usernames using up to 20 threads
 
-🎯 Accurate Detection — Identifies available, unavailable, and invalid/reserved usernames.
+Accurate Detection — Detects available, unavailable, and invalid/reserved usernames
 
-🔔 Alerts System
+Alerts System
 
-Optional beep sound when a username becomes available
+Optional beep sound when a name becomes available
 
 Discord webhook notifications
 
-📁 Automatic Logging — Saves available usernames to hits.txt.
+Automatic Logging — Saves available usernames to hits.txt
 
-🧩 Interactive Menu — Includes options panel, ASCII art header, and colored CLI output.
+Interactive Menu — Options menu, ASCII art banner, colored CLI output
 
-🔄 Continuous Monitoring — Re-scans the list every 10 seconds.
+Continuous Monitoring — Re-scans all usernames every 10 seconds
 
-📦 Requirements
-
-Your environment should have:
+Requirements
 
 Python 3.8+
 
-The following pip packages:
+Install required packages:
 
 pip install requests colorama
 
-📂 File Structure
-📁 Project/
- ├── checker.py           # Main script
- ├── usernames.txt        # Add usernames to check
- ├── hits.txt             # Automatically created when available names are found
- ├── config.json          # Webhook + beep settings
- └── README.md
+File Structure
+project/
+│── checker.py        # Main script
+│── usernames.txt     # Add usernames to scan
+│── hits.txt          # Auto-created when a username is available
+│── config.json       # Webhook + beep settings
+└── README.md
 
-🔧 Installation
+Installation
 
 Clone the repository:
 
@@ -51,56 +49,53 @@ Install dependencies:
 pip install -r requirements.txt
 
 
-(or manually install requests + colorama)
+Add usernames (one per line) to:
 
-Add your username list:
-Insert usernames into usernames.txt, one per line.
+usernames.txt
 
-▶️ Usage
+Usage
 
 Run the script:
 
 python checker.py
 
 
-Navigate the menu:
+Main menu:
 
 1. Start username checker
 2. Options
 
-Options Menu Includes:
+Options Menu
 
-Set / remove Discord webhook
+Set Discord webhook URL
 
-Toggle beep notifications
+Enable/disable beep notifications
 
-View current settings
+Remove webhook
 
-🖥️ Output Example
+Example Output
 Time       | Username            | Status
 --------------------------------------------------
 12:03:15   | example_name        | unavailable
 12:03:16   | rareuser123         | available
             >>> rareuser123 is available! CLAIM NOW! <<<
 
-🎯 Webhook Notifications
 
-If enabled, the script will send a Discord message when a username becomes available:
+If a webhook is configured, the script also sends:
 
 Telegram username available: rareuser123
 
-🧠 How It Works
+How It Works
 
-The checker:
+The script performs an HTTP GET request to:
 
-Fetches https://t.me/<username>
+https://t.me/<username>
 
-Reads the <title> tag and specific Telegram response patterns
 
-Determines:
+It then analyzes the <title> tag and Telegram error messages to determine:
 
 Available
 
 Unavailable
 
-Reserved / invalid
+Invalid / Reserved
